@@ -56,7 +56,7 @@
       <tr>
         <td>{{item.creator.name}}</td>
 
-        <td>{{item.destination}}</td>
+        <td><a href="{% url 'beltapp:travelInfo' item.id %}">{{item.destination}}</a></td>
         <td>{{item.date_from}}</td>
         <td>{{item.date_to}}</td>
         <td><a href="{%url 'beltapp:join' item.id%}">Join</a></td>
