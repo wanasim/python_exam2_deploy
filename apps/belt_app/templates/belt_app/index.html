@@ -1,0 +1,75 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+   </head>
+   <body>
+      <h2>Hello, {{name.name}}</h2>
+      <a href="{% url 'loginReg:logout' %}">Logout</a>
+      <br>
+
+      <h3>You Trip Schedules</h3>
+      <table>
+      <thead>
+        <th>Destination</th>
+        <th>Travel Start Date</th>
+        <th>Travel End Date</th>
+        <th>Plan</th>
+      </thead>
+      <tbody>
+
+        {% for item in current_user %}
+
+         <tr>
+            <td><a href="{% url 'beltapp:travelInfo' item.id %}">{{ item.destination }}</a></td>
+
+            <td>{{item.date_from}}</td>
+
+
+            <td>{{ item.date_to }}</td>
+
+            <td>{{item.description}}</td>
+
+         </tr>
+
+        {% endfor %}
+      </tbody>
+    </table>
+
+    <br>
+
+      <h3>Other's Trip Schedules</h3>
+
+      <table>
+      <thead>
+      <th>Name</th>
+      <th>Destination</th>
+      <th>Travel Start Date</th>
+      <th>Travel End Date</th>
+      <th>Do you want to join?</th>
+      </thead>
+      <tbody>
+
+      {% for item in not_user %}
+
+      <tr>
+        <td>{{item.creator.name}}</td>
+
+        <td>{{item.destination}}</td>
+        <td>{{item.date_from}}</td>
+        <td>{{item.date_to}}</td>
+        <td><a href="{%url 'beltapp:join' item.id%}">Join</a></td>
+      </tr>
+
+      {% endfor %}
+      </tbody>
+      </table>
+
+
+      <br>
+
+
+      <a href="{% url 'beltapp:addTravel' %}">Add Travel Plan</a>
+   </body>
+</html>

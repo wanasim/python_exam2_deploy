@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html>
+   <head>
+      <meta charset="utf-8">
+      <title></title>
+   </head>
+   <body>
+      <a href="{% url 'beltapp:index' %}">Home</a>
+      <a href="{% url 'loginReg:logout' %}">Logout</a>
+
+      <h2>{{travel_info.destination}}</h2>
+      <p>Planned by: {{travel_info.creator.name}}</p>
+      <p>Description: {{travel_info.description}}</p>
+      <p>Travel Date From: {{travel_info.date_from}}</p>
+      <p>Travel Date To: {{travel_info.date_to}}</p>
+
+      <br>
+      <h2>Other User's joining the trip</h2>
+         <ul>
+            {% for user in travel_info.user_of_travel.all %}
+               {% if user.id != travel_info.creator.id %}
+                  <li>{{user.name}}</li>
+               {% endif %}
+            {% endfor %}
+         </ul>
+   </body>
+</html>
