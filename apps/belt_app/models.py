@@ -58,6 +58,14 @@ class TravelManager(models.Manager):
         user_info.save()
         return "Succesfully joined a trip!"
 
+    def delete(request, user_id, travel_id):
+        # user_info = User.objects.get(id=user_id)
+        travel = Travel.objects.get(id = travel_id).delete()
+        print 'removed trip!'
+        # user_info.travel_of_user.remove(curr_travel)
+        # travel.save()
+        return "Succesfully removed a trip!"
+
 
 
 class Travel(models.Model):

@@ -55,3 +55,11 @@ def join(request, id):
 
         return redirect('beltapp:index')
     return redirect('loginReg:index')
+
+def delete(request, id):
+    if 'id' in request.session:
+        user_id = request.session['id']
+        delete_travel = Travel.objects.delete(user_id, id)
+
+        return redirect('beltapp:index')
+    return redirect('loginReg:index')

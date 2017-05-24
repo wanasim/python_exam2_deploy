@@ -3,29 +3,38 @@
    <head>
       <meta charset="utf-8">
       <title>Login or Register</title>
+      {% load staticfiles %}
+      <link rel="stylesheet" href="{%static 'loginReg/css/materialize.css'%}">
+      <link rel="stylesheet" href="style.css">
    </head>
    <body>
-      {%for message in messages%}
-      <p>{{message}}</p>
-      {% endfor %}
-      <h2>Login</h2>
-      <form action="{% url 'loginReg:login' %}" method="post">
-         {% csrf_token %}
-         <input type="text" name="username" value="" placeholder="Username">
-         <input type="password" name="password" placeholder="Password">
-         <input type="submit" name="" value="Login">
-      </form>
+      <div class="container row">
+         {%for message in messages%}
+         <p class="materialize-red-text">{{message}}</p>
+         {% endfor %}
+         <h2>Login</h2>
+         <form class="col s6" action="{% url 'loginReg:login' %}" method="post">
+            {% csrf_token %}
+            <input type="text" name="username" value="" placeholder="Username">
+            <input type="password" name="password" placeholder="Password">
+            <input class="waves-effect waves-light btn" type="submit" name="" value="Login">
+         </form>
+
+      </div>
 
        <!-- Register Section -->
-      <h2>Register</h2>
-      <form action="{% url 'loginReg:register' %}" method="post">
-         {% csrf_token %}
-         <input type="text" name="name" value="" placeholder="Name">
-         <input type="text" name="username" value="" placeholder="Username">
-         <input type="password" name="password" placeholder="Password">
-         <input type="password" name="cpassword" placeholder="Confirm Password">
-         <input type="submit" name="" value="Register">
-      </form>
+       <div class="container row">
+          <h2>Register</h2>
+          <form class="col s6" action="{% url 'loginReg:register' %}" method="post">
+             {% csrf_token %}
+             <input type="text" name="name" value="" placeholder="Name">
+             <input type="text" name="username" value="" placeholder="Username">
+             <input type="password" name="password" placeholder="Password">
+             <input type="password" name="cpassword" placeholder="Confirm Password">
+             <input class="waves-effect waves-light btn" type="submit" name="" value="Register">
+          </form>
+
+       </div>
 
    </body>
 </html>

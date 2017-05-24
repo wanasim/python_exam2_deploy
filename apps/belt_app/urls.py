@@ -4,6 +4,7 @@ from . import views
 app_name="beltapp"
 
 urlpatterns=[
+    url(r'^delete/(?P<id>\d+)$', views.delete, name='delete'),
     url(r'^join/(?P<id>\d+)$', views.join, name='join'),
     # url(r'^remove/(?P<id>\d+)$', views.removeItem, name='remove'),
     url(r'^travel/(?P<id>\d+)$', views.travelInfo, name="travelInfo"),
